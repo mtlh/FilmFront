@@ -11,7 +11,6 @@ import { Reorder } from 'framer-motion';
 import axios from 'axios';
 import { Item } from '../../components/List_item';
 import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 import Nav from '../../components/Nav';
 import { getAvatarName } from '../../functions/getAvatarName';
 

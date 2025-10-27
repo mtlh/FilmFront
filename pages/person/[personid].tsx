@@ -11,7 +11,6 @@ import { getAvatarName } from "../../functions/getAvatarName";
 import { useSession } from '@supabase/auth-helpers-react';
 import axios from 'axios';
 import { toast, ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 
 export async function getServerSideProps(ctx: GetServerSidePropsContext) {
     // Fetch data from external API

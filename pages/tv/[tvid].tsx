@@ -11,7 +11,6 @@ import Nav from '../../components/Nav';
 import router from 'next/router';
 import { getAvatarName } from '../../functions/getAvatarName';
 import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 import { Hero } from '../../components/Hero';
 import { compareSecondColumn } from '../../functions/SortSecond';
 import { useEffect } from 'react';
