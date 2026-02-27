@@ -4,7 +4,7 @@
 const baseimg = "https://image.tmdb.org/t/p/w500";
 
 import { useAutoAnimate } from "@formkit/auto-animate/react";
-import { createServerSupabaseClient } from "@supabase/auth-helpers-nextjs";
+import { createPagesServerClient } from "@supabase/auth-helpers-nextjs";
 import axios from "axios";
 import { GetServerSidePropsContext } from "next";
 import router from "next/router";
@@ -17,7 +17,7 @@ export async function getServerSideProps(ctx: GetServerSidePropsContext) {
     const movie = await fetch("https://api.themoviedb.org/3/trending/movie/week?api_key=" + process.env.NEXT_PUBLIC_APIKEY?.toString() + "&language=en-US&include_adult=false").then((response) => response.json());
     const type = "movie";
     // Pass data to the page via props
-    const supabase = createServerSupabaseClient(ctx)
+    const supabase = createPagesServerClient(ctx)
     // Check if we have a session
     const {
         data: { session },

@@ -2,7 +2,7 @@ import { useAutoAnimate } from "@formkit/auto-animate/react";
 import dynamic from "next/dynamic";
 import { useState } from "react";
 
-const ReactPlayer = dynamic(() => import("react-player"), { ssr: false });
+const ReactPlayer = dynamic(() => import("react-player"), { ssr: false }) as any;
 
 export function Videos ({ videos } : any) {
     const video_arr: (string | number)[][] = [];

@@ -2,7 +2,7 @@
 /* eslint-disable @next/next/no-img-element */
 
 import { useAutoAnimate } from '@formkit/auto-animate/react';
-import { createServerSupabaseClient } from '@supabase/auth-helpers-nextjs';
+import { createPagesServerClient } from '@supabase/auth-helpers-nextjs';
 import { useSession } from '@supabase/auth-helpers-react';
 import axios from 'axios';
 import { GetServerSidePropsContext, NextApiRequest, NextApiResponse, PreviewData } from 'next';
@@ -20,7 +20,7 @@ export async function getServerSideProps(ctx: GetServerSidePropsContext<ParsedUr
     const collectionid = ctx.query.collectionid;
     const main = await fetch("https://api.themoviedb.org/3/collection/" + collectionid + "?api_key=" + process.env.NEXT_PUBLIC_APIKEY?.toString()).then((response) => response.json());
     // Pass data to the page via props
-    const supabase = createServerSupabaseClient(ctx)
+    const supabase = createPagesServerClient(ctx)
     // Check if we have a session
     const {
         data: { session },

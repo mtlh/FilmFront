@@ -1,4 +1,4 @@
-import { createBrowserSupabaseClient } from "@supabase/auth-helpers-nextjs";
+import { createPagesBrowserClient } from "@supabase/auth-helpers-nextjs";
 import { NextApiRequest, NextApiResponse } from "next";
 
 const baseimg = "https://image.tmdb.org/t/p/w500";
@@ -8,7 +8,7 @@ export const config = {
 };
 
 export default async function Top500(req: NextApiRequest, res: NextApiResponse) {
-    const supabase = createBrowserSupabaseClient();
+    const supabase = createPagesBrowserClient();
     const checkmonth = await supabase.from("top500").select().eq("month", new Date().getMonth().toString() + new Date().getFullYear().toString());
     // @ts-ignore
     let new_month = false;

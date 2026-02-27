@@ -6,7 +6,7 @@ import Topcast from "../../components/Topcast";
 import Topcrew from "../../components/Topcrew";
 import Recommended from "../../components/Recommend";
 import { Videos } from "../../components/Videos";
-import { createServerSupabaseClient } from '@supabase/auth-helpers-nextjs';
+import { createPagesServerClient } from '@supabase/auth-helpers-nextjs';
 import Nav from '../../components/Nav';
 import router from 'next/router';
 import { getAvatarName } from '../../functions/getAvatarName';
@@ -19,7 +19,7 @@ import { isDateWithin5Days } from '../../functions/checkDate';
 const baseimg = "https://image.tmdb.org/t/p/w500";
 
 export const getServerSideProps = async (ctx: any) => {
-    const supabase = createServerSupabaseClient(ctx);
+    const supabase = createPagesServerClient(ctx);
     const {
         data: { session },
     } = await supabase.auth.getSession();

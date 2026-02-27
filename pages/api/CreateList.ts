@@ -1,12 +1,12 @@
 /* eslint-disable react-hooks/rules-of-hooks */
-import { createBrowserSupabaseClient } from "@supabase/auth-helpers-nextjs";
+import { createPagesBrowserClient } from "@supabase/auth-helpers-nextjs";
 import { NextApiRequest, NextApiResponse } from "next";
 
 export default async function CreateList(req: NextApiRequest, res: NextApiResponse<any>) {
     const userid = req.query.userid;
     const listid = makeid(12);
     const datecreated = new Date().toLocaleDateString("en-GB").toString();
-    const supabase = createBrowserSupabaseClient();
+    const supabase = createPagesBrowserClient();
     await supabase
         .from('listcontent')
         .insert({ userid: userid, listid: listid, name: "myList", summary: "This is a template summary, please click view list below to edit this...", 

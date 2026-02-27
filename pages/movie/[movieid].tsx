@@ -7,7 +7,7 @@ import Topcast from "../../components/Topcast";
 import Topcrew from "../../components/Topcrew";
 import Recommended from "../../components/Recommend";
 import { Videos } from "../../components/Videos";
-import { createServerSupabaseClient } from '@supabase/auth-helpers-nextjs';
+import { createPagesServerClient } from '@supabase/auth-helpers-nextjs';
 import Nav from '../../components/Nav';
 import { getAvatarName } from '../../functions/getAvatarName';
 import { ToastContainer } from 'react-toastify';
@@ -19,7 +19,7 @@ import { baseimg } from '../../functions/baseimg';
 import { isDateWithin5Days } from '../../functions/checkDate';
 
 export const getServerSideProps = async (ctx: any) => {
-    const supabase = createServerSupabaseClient(ctx);
+    const supabase = createPagesServerClient(ctx);
     const {
         data: { session },
     } = await supabase.auth.getSession()

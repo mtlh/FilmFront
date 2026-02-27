@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/rules-of-hooks */
-import { createBrowserSupabaseClient } from "@supabase/auth-helpers-nextjs";
+import { createPagesBrowserClient } from "@supabase/auth-helpers-nextjs";
 import { NextApiRequest, NextApiResponse } from "next";
 
 export default async function AddRating(req: NextApiRequest, res: NextApiResponse<any>) {
@@ -11,7 +11,7 @@ export default async function AddRating(req: NextApiRequest, res: NextApiRespons
     let rating = req.query.rating;
     let comment = req.query.comment;
     const added = new Date().toLocaleDateString("en-GB").toString();
-    const supabase = createBrowserSupabaseClient();
+    const supabase = createPagesBrowserClient();
     const {error, data} = await supabase.from('rating').upsert({ userid: userid, itemid: itemid, type: type, itemname: itemname, image: image, added: added, rating: rating?.toString(), comment: comment});
     res.status(200).json({message: "Added to ratings!", data: data, error: error});
 }

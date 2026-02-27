@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/rules-of-hooks */
-import { createBrowserSupabaseClient } from "@supabase/auth-helpers-nextjs";
+import { createPagesBrowserClient } from "@supabase/auth-helpers-nextjs";
 import { NextApiRequest, NextApiResponse } from "next";
 
 export default async function SaveList(req: NextApiRequest, res: NextApiResponse<any>) {
@@ -9,7 +9,7 @@ export default async function SaveList(req: NextApiRequest, res: NextApiResponse
     const items = req.query.items;
     const item_imgs = req.query.item_imgs;
     const datecreated = new Date().toLocaleTimeString("en-GB") + " " + new Date().toLocaleDateString();
-    const supabase = createBrowserSupabaseClient();
+    const supabase = createPagesBrowserClient();
     let ifitem = "";
     if (item_imgs) {
         ifitem = item_imgs.toString().split("$%$")[0];

@@ -1,10 +1,10 @@
 /* eslint-disable react-hooks/rules-of-hooks */
-import { createBrowserSupabaseClient } from "@supabase/auth-helpers-nextjs";
+import { createPagesBrowserClient } from "@supabase/auth-helpers-nextjs";
 import { NextApiRequest, NextApiResponse } from "next";
 
 export default async function UpsertNickname(req: NextApiRequest, res: NextApiResponse<any>) {
     const userid = req.query.userid;
-    const supabase = createBrowserSupabaseClient();
+    const supabase = createPagesBrowserClient();
     const {data} = await supabase.from('user_nicknames').select("nickname").eq("userid", userid);
     try {
         // @ts-ignore

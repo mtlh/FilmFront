@@ -5,7 +5,7 @@
 
 import { useSession } from '@supabase/auth-helpers-react';
 import { useRouter } from 'next/router';
-import { createServerSupabaseClient, Session } from '@supabase/auth-helpers-nextjs'
+import { createPagesServerClient, Session } from '@supabase/auth-helpers-nextjs'
 import { useEffect, useState } from 'react';
 import { Reorder } from 'framer-motion';
 import axios from 'axios';
@@ -18,7 +18,7 @@ const baseimg = "https://image.tmdb.org/t/p/w500";
 
 export const getServerSideProps = async (ctx: any) => {
     // Create authenticated Supabase Client
-    const supabase = createServerSupabaseClient(ctx);
+    const supabase = createPagesServerClient(ctx);
     // Check if we have a session
     const {
         data: { session },

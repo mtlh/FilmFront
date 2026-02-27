@@ -1,9 +1,9 @@
 /* eslint-disable react-hooks/rules-of-hooks */
-import { createBrowserSupabaseClient } from "@supabase/auth-helpers-nextjs";
+import { createPagesBrowserClient } from "@supabase/auth-helpers-nextjs";
 import { NextApiRequest, NextApiResponse } from "next";
 
 export default async function CreateList(req: NextApiRequest, res: NextApiResponse<any>) {
-    const supabase = createBrowserSupabaseClient();
+    const supabase = createPagesBrowserClient();
 
     const select = await supabase.from('top500').select().eq("id", 1);
     const insert = await supabase.from('top500').insert({"id": 2 , "movie": [], "tv": [], "month": ""});

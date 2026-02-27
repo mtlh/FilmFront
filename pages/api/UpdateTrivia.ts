@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/rules-of-hooks */
-import { createBrowserSupabaseClient } from "@supabase/auth-helpers-nextjs";
+import { createPagesBrowserClient } from "@supabase/auth-helpers-nextjs";
 import { NextApiRequest, NextApiResponse } from "next";
 
 export default async function UpdateTrivia(req: NextApiRequest, res: NextApiResponse<any>) {
@@ -8,7 +8,7 @@ export default async function UpdateTrivia(req: NextApiRequest, res: NextApiResp
     if (answer != undefined){
         answer = JSON.parse(answer?.toString());
     }
-    const supabase = createBrowserSupabaseClient();
+    const supabase = createPagesBrowserClient();
 
     const userhistory = await supabase.from("trivia_scores").select().eq("userid", userid);
     let history = [];

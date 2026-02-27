@@ -160,14 +160,14 @@ export function Hero ({ main, response, watchlist_bool, rating_bool, type } : an
                                                     <div className="modal-action gap-2">
                                                         {session && rating_bool != false ?
                                                             <button
-                                                                onClick={() => AddRating(session.user.id, main.id, name, poster_img, type, currentinput, ratingRange)}
+                                                                onClick={() => session.user && AddRating(session.user.id, main.id, name, poster_img, type, currentinput, ratingRange)}
                                                                 className="inline-block rounded-lg px-4 py-1.5 text-base font-semibold leading-7 bg-green-500 text-white shadow-md hover:scale-110 hover:text-black hover:bg-green-300 ease-in-out transition"
                                                             >
                                                                 Update Rating
                                                             </button>
                                                             :
                                                             <button
-                                                                onClick={() => AddRating(session.user.id, main.id, name, poster_img, type, currentinput, ratingRange)}
+                                                                onClick={() => session.user && AddRating(session.user.id, main.id, name, poster_img, type, currentinput, ratingRange)}
                                                                 className="inline-block rounded-lg px-4 py-1.5 text-base font-semibold leading-7 bg-green-500 text-white shadow-md hover:scale-110 hover:text-black hover:bg-green-300 ease-in-out transition"
                                                             >
                                                                 Create Rating
@@ -175,7 +175,7 @@ export function Hero ({ main, response, watchlist_bool, rating_bool, type } : an
                                                         }
                                                         {session && rating_bool != false &&
                                                             <button
-                                                                onClick={() => DeleteRating(session.user.id, main.id, name, poster_img, type, currentinput, ratingRange)}
+                                                                onClick={() => session.user && DeleteRating(session.user.id, main.id, name, poster_img, type, currentinput, ratingRange)}
                                                                 className="inline-block rounded-lg px-4 py-1.5 text-base font-semibold leading-7 bg-red-500 text-white shadow-md hover:scale-110 hover:text-black hover:bg-red-300 ease-in-out transition"
                                                             >
                                                                 Delete Existing Rating
@@ -189,7 +189,7 @@ export function Hero ({ main, response, watchlist_bool, rating_bool, type } : an
                                     }
                                     {session && watchlist_bool == false &&
                                         <button
-                                            onClick={() => AddWatchlist(session.user.id, main.id, name, poster_img, type)}
+                                            onClick={() => session.user && AddWatchlist(session.user.id, main.id, name, poster_img, type)}
                                             className="text-center my-auto inline-block rounded-lg px-4 py-1.5 text-base font-semibold leading-7 bg-green-500 text-white shadow-md hover:scale-110 hover:text-black hover:bg-green-300 ease-in-out transition"
                                         >
                                             Watchlist+
@@ -197,7 +197,7 @@ export function Hero ({ main, response, watchlist_bool, rating_bool, type } : an
                                     }
                                     {session && watchlist_bool == true &&
                                         <button
-                                            onClick={() => RemoveWatchlist(session.user.id, main.id, type)}
+                                            onClick={() => session.user && RemoveWatchlist(session.user.id, main.id, type)}
                                             className="text-center my-auto inline-block rounded-lg px-4 py-1.5 text-base font-semibold leading-7 bg-red-500 text-white shadow-md hover:scale-110 hover:text-black hover:bg-red-300 ease-in-out transition"
                                         >
                                             Watchlist-

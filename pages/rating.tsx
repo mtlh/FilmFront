@@ -3,7 +3,7 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import { useSession, useSupabaseClient } from '@supabase/auth-helpers-react';
 import { Auth, ThemeSupa } from '@supabase/auth-ui-react';
-import { createServerSupabaseClient } from '@supabase/auth-helpers-nextjs'
+import { createPagesServerClient } from '@supabase/auth-helpers-nextjs'
 import { GetServerSidePropsContext, PreviewData, NextApiRequest, NextApiResponse } from 'next';
 import { ParsedUrlQuery } from 'querystring';
 import Nav from '../components/Nav';
@@ -15,7 +15,7 @@ import { WatchlistAZ, WatchlistZA } from '../functions/SortWatchlist';
 
 export const getServerSideProps = async (ctx: GetServerSidePropsContext<ParsedUrlQuery, PreviewData> | { req: NextApiRequest; res: NextApiResponse<any>; }) => {
     // Create authenticated Supabase Client
-    const supabase = createServerSupabaseClient(ctx)
+    const supabase = createPagesServerClient(ctx)
     // Check if we have a session
     const {
         data: { session },

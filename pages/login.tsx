@@ -3,7 +3,7 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import { useSession, useSupabaseClient } from '@supabase/auth-helpers-react';
 import { Auth, ThemeSupa } from '@supabase/auth-ui-react';
-import { createServerSupabaseClient, Session, SupabaseClient } from '@supabase/auth-helpers-nextjs'
+import { createPagesServerClient, Session, SupabaseClient } from '@supabase/auth-helpers-nextjs'
 import { GetServerSidePropsContext } from 'next';
 import Nav from '../components/Nav';
 import router, { useRouter } from 'next/router';
@@ -33,7 +33,7 @@ export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
     });
     var movie_item = movie_arr[Math.floor(Math.random()*movie_arr.length)];
     // Create authenticated Supabase Client
-    const supabase = createServerSupabaseClient(ctx)
+    const supabase = createPagesServerClient(ctx)
     // Check if we have a session
     const {
         data: { session },

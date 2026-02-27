@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import { useAutoAnimate } from '@formkit/auto-animate/react';
-import { createServerSupabaseClient } from "@supabase/auth-helpers-nextjs";
+import { createPagesServerClient } from "@supabase/auth-helpers-nextjs";
 import { GetServerSidePropsContext } from "next";
 import Nav from "../components/Nav";
 import router from "next/router";
@@ -16,7 +16,7 @@ export async function getServerSideProps(ctx: GetServerSidePropsContext) {
     const tv = await fetch("https://api.themoviedb.org/3/trending/tv/week?api_key=" + process.env.NEXT_PUBLIC_APIKEY?.toString() + "&language=en-US&include_adult=false").then((response) => response.json());
     const people = await fetch("https://api.themoviedb.org/3/trending/person/week?api_key=" + process.env.NEXT_PUBLIC_APIKEY?.toString() + "&language=en-US&include_adult=false").then((response) => response.json());
     // Pass data to the page via props
-    const supabase = createServerSupabaseClient(ctx);
+    const supabase = createPagesServerClient(ctx);
 
     // Check if we have a session
     const {

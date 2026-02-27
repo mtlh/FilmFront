@@ -2,7 +2,7 @@
 /* eslint-disable @next/next/no-img-element */
 
 import { useAutoAnimate } from "@formkit/auto-animate/react";
-import { createServerSupabaseClient } from "@supabase/auth-helpers-nextjs";
+import { createPagesServerClient } from "@supabase/auth-helpers-nextjs";
 import { GetServerSidePropsContext } from "next";
 import router from "next/router";
 import { useEffect, useState } from "react";
@@ -18,7 +18,7 @@ export async function getServerSideProps(ctx: GetServerSidePropsContext) {
     const main = await fetch("https://api.themoviedb.org/3/person/" + personid + "?api_key=" + process.env.NEXT_PUBLIC_APIKEY?.toString()).then((response) => response.json());
     const credits = await fetch("https://api.themoviedb.org/3/person/" + personid + "/combined_credits?api_key=" + process.env.NEXT_PUBLIC_APIKEY?.toString()).then((response) => response.json());
     
-    const supabase = createServerSupabaseClient(ctx);
+    const supabase = createPagesServerClient(ctx);
     const {
         data: { session },
     } = await supabase.auth.getSession()

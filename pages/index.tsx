@@ -2,7 +2,7 @@
 /* eslint-disable react/no-unescaped-entities */
 /* eslint-disable @next/next/no-img-element */
 
-import { createServerSupabaseClient } from "@supabase/auth-helpers-nextjs";
+import { createPagesServerClient } from "@supabase/auth-helpers-nextjs";
 import { GetServerSidePropsContext } from "next";
 import Link from "next/link";
 import Nav from "../components/Nav";
@@ -31,7 +31,7 @@ export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
     movie_arr.splice(rand2-1, rand2+1);
 
     // Create authenticated Supabase Client
-    const supabase = createServerSupabaseClient(ctx)
+    const supabase = createPagesServerClient(ctx)
     // Check if we have a session
     const {
         data: { session },
